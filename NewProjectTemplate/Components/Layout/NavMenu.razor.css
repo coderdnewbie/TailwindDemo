@@ -15,6 +15,14 @@
     background-color: rgba(255, 255, 255, 0.5);
 }
 
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .top-row {
     height: 3.5rem;
     background-color: rgba(0,0,0,0.4);

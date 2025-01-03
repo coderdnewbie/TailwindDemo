@@ -1,12 +1,12 @@
 ﻿<div class="top-row navbar navbar-dark ps-3">
-    <div class="p-4 text-xl font-semibold text-white">Tailwind CSS in Blazor</div>
+    <div class="p-4 text-xl font-semibold text-white">Tailwind CSS</div>
 </div>
 
 <input name="navbartoggler" type="checkbox" title="Navigation menu" class="navbar-toggler" />
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+<div class="@NavMenuCssClass" onclick="ToggleNavMenu">
     <nav>
-        <div class="nav-item px-3">
+        <div class="nav-item px-3" @onclick='@(() => ToggleSubMenu(""))'>
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <svg class="ml-4 mr-3 h-5 w-5" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
@@ -15,7 +15,7 @@
             </NavLink>
         </div>
 
-        <div class="nav-item px-3">
+        <div class="nav-item px-3" @onclick='@(() => ToggleSubMenu(""))'>
             <NavLink class="nav-link" href="counter">
                 <svg class="ml-4 mr-3 h-5 w-5" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
@@ -24,7 +24,7 @@
             </NavLink>
         </div>
 
-        <div class="nav-item px-3">
+        <div class="nav-item px-3" @onclick='@(() => ToggleSubMenu(""))'>
             <NavLink class="nav-link" href="weather">
                 <svg class="ml-4 mr-3 h-5 w-5" fill="currentColor" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
@@ -34,11 +34,22 @@
             </NavLink>
         </div>
 
-        <div class="nav-item px-3" @onclick='@(() => ToggleSubMenu("subMenu1"))'>
-            <NavLink role="button" class="nav-link flex-container" Match="NavLinkMatch.All">
-                <span><svg class="ml-4 mr-3 h-5 w-5" fill="currentColor" viewBox="0 0 16 16">
+        <div class="nav-item px-3" @onclick='@(() => ToggleSubMenu(""))'>
+            <NavLink class="nav-link" href="ideas">
+                <svg class="ml-4 mr-3 h-5 w-5" fill="currentColor" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
                           d="M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z" />
+                </svg>
+                Ideas
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3" @onclick='@(() => ToggleSubMenu("subMenu1"))'>
+            <NavLink role="button" class="nav-link flex-container" Match="NavLinkMatch.All">
+                <span>
+                    <svg class="ml-4 mr-3 h-5 w-5" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z" />
                     </svg>
                 </span>
                 <span><label class="unselectable">Sub Menu 1</label></span>
@@ -62,21 +73,21 @@
                 }
             </NavLink>
             <div class="sub-menu" style="display: @(IsSubMenuOpen("subMenu1") ? "block" : "none")">
-                <NavLink class="nav-link" href="subitem1">
+                <NavLink class="nav-link" href="counter2">
                     <span>
                         <svg class="ml-8 mr-3 h-5 w-5" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
                         </svg>
                     </span>
-                    <span><label class="unselectable">Sub Menu 1 Item 1</label></span>
+                    <span><label class="unselectable">Counter 2</label></span>
                 </NavLink>
-                <NavLink class="nav-link" href="subitem2">
+                <NavLink class="nav-link" href="weather2">
                     <span>
                         <svg class="ml-8 mr-3 h-5 w-5" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
                         </svg>
                     </span>
-                    <span><label class="unselectable">Sub Menu 1 Item 2</label></span>
+                    <span><label class="unselectable">Weather 2</label></span>
                 </NavLink>
             </div>
         </div>
@@ -110,21 +121,21 @@
                 }
             </NavLink>
             <div class="sub-menu" style="display: @(IsSubMenuOpen("subMenu2") ? "block" : "none")">
-                <NavLink class="nav-link" href="subitem1">
+                <NavLink class="nav-link" href="counter3">
                     <span>
                         <svg class="ml-8 mr-3 h-5 w-5" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
                         </svg>
                     </span>
-                    <span><label class="unselectable">Sub Menu 2 Item 1</label></span>
+                    <span><label class="unselectable">Counter3</label></span>
                 </NavLink>
-                <NavLink class="nav-link" href="subitem2">
+                <NavLink class="nav-link" href="weather3">
                     <span>
                         <svg class="ml-8 mr-3 h-5 w-5" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
                         </svg>
                     </span>
-                    <span><label class="unselectable">Sub Menu 2 Item 2</label></span>
+                    <span><label class="unselectable">Weather 3</label></span>
                 </NavLink>
             </div>
         </div>
@@ -138,7 +149,7 @@
     public EventCallback<bool> ShowIconMenu { get; set; }
 
     private bool collapseNavMenu = true;
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string? NavMenuCssClass => collapseNavMenu ? "nav-scrollable" : null;
     private Dictionary<string, bool> subMenuStates = new Dictionary<string, bool>();
 
     private void ToggleNavMenu()
@@ -148,25 +159,18 @@
 
     private void ToggleSubMenu(string subMenuKey)
     {
-        if (subMenuStates.ContainsKey(subMenuKey) && subMenuStates[subMenuKey])
+        foreach (var key in subMenuStates.Keys.ToList())
         {
-            subMenuStates[subMenuKey] = false;
+            subMenuStates[key] = false;
+        }
+
+        if (subMenuStates.ContainsKey(subMenuKey))
+        {
+            subMenuStates[subMenuKey] = !subMenuStates[subMenuKey];
         }
         else
         {
-            foreach (var key in subMenuStates.Keys.ToList())
-            {
-                subMenuStates[key] = false;
-            }
-
-            if (subMenuStates.ContainsKey(subMenuKey))
-            {
-                subMenuStates[subMenuKey] = !subMenuStates[subMenuKey];
-            }
-            else
-            {
-                subMenuStates[subMenuKey] = true;
-            }
+            subMenuStates[subMenuKey] = true;
         }
     }
 

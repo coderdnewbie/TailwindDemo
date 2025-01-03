@@ -74,14 +74,6 @@ h1:focus {
     outline: 2px solid #e50000;
 }
 
-.unselectable {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
 .validation-message {
     color: #e50000;
 }
